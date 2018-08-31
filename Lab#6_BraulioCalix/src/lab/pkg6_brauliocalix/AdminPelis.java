@@ -98,7 +98,6 @@ public class AdminPelis {
                     idiorigi=sc.next();
                     doblaje=sc.next();
                     subti=sc.next();
-                    
                     listaPelis.add(new Peliculas(Nombre, tiempo, cate, actor, direc, compa, idiorigi, doblaje, subti));                 
                 }
             } catch (Exception e) {

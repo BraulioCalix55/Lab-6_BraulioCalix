@@ -45,6 +45,7 @@ public class Necfilcs extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_nec = new javax.swing.JTree();
         agregar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         creacionpeli = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -116,16 +117,25 @@ public class Necfilcs extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("logout");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout menu1Layout = new javax.swing.GroupLayout(menu1.getContentPane());
         menu1.getContentPane().setLayout(menu1Layout);
         menu1Layout.setHorizontalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(creaserie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(creapeli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(creaserie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(creapeli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(95, 95, 95)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(95, Short.MAX_VALUE))
@@ -133,17 +143,20 @@ public class Necfilcs extends javax.swing.JFrame {
         menu1Layout.setVerticalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
-            .addGroup(menu1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(creapeli)
-                .addGap(84, 84, 84)
-                .addComponent(creaserie)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(agregar)
-                .addGap(39, 39, 39))
+                .addGroup(menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menu1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(creapeli)
+                        .addGap(84, 84, 84)
+                        .addComponent(creaserie)
+                        .addGap(53, 53, 53)
+                        .addComponent(agregar)))
+                .addGap(1, 1, 1)
+                .addComponent(jButton1)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jLabel3.setText("nombre");
@@ -477,6 +490,7 @@ public class Necfilcs extends javax.swing.JFrame {
         if (f == true) {
             JOptionPane.showMessageDialog(this, "bienvenido " + Nombre);
         }
+        logout = false;
         nombrelog.setText("");
         jPasswordField1.setText("");
         menu1.setModal(true);
@@ -497,21 +511,19 @@ public class Necfilcs extends javax.swing.JFrame {
     }//GEN-LAST:event_creaserieMouseClicked
 
     private void agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseClicked
-        
 
     }//GEN-LAST:event_agregarMouseClicked
 
     private void creapelisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creapelisMouseClicked
-        String Nombre = nombrepeli.getText();
-        String Tiempo = pelidura.getText();
-        String Categoria = (String) cbtipo.getSelectedItem();
-        String Actores = actorpeli.getText();
-        String director = directorpeli.getText();
-        String compania = companiapeli.getText();
-        String Idiorigi = idiomapeli.getText();
-        String dobla = (String) doblajepeli.getSelectedItem();
-        String Subtitulo = (String) subspeli.getSelectedItem();
-        peli.add(new Peliculas(Nombre, Tiempo, Categoria, Actores, director, compania, Idiorigi, dobla, Subtitulo));
+        SNombre = nombrepeli.getText();
+        STiempo = pelidura.getText();
+        SCategoria = (String) cbtipo.getSelectedItem();
+        SActores = actorpeli.getText();
+        Sdirector = directorpeli.getText();
+        Scompania = companiapeli.getText();
+        SIdiorigi = idiomapeli.getText();
+        Sdobla = (String) doblajepeli.getSelectedItem();
+        SSubtitulo = (String) subspeli.getSelectedItem();
         nombrepeli.setText("");
         pelidura.setText("");
         actorpeli.setText("");
@@ -519,41 +531,59 @@ public class Necfilcs extends javax.swing.JFrame {
         companiapeli.setText("");
         idiomapeli.setText("");
         creacionpeli.dispose();
-        AdminPelis adp=new AdminPelis("./Peliculas.txt");
-
-        adp.getListaPelis().add(new Peliculas(Nombre, Tiempo, Categoria, Actores, director, compania, Idiorigi, dobla, Subtitulo));
-        try {
-            adp.escribirArchivo();
-        } catch (IOException ex) {
-
-        }
     }//GEN-LAST:event_creapelisMouseClicked
 
     private void crear_serieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_serieMouseClicked
-        String nombre = nomserie.getText();
-        String Tiempo = seriedura.getText();
-        String categoria = (String) cb_serie.getSelectedItem();
-        String actores = actorserie.getText();
-        String temps = canttemp.getText();
-        String productora = productoraserie.getText();
-        String idiomaorigi = idiomaori.getText();
-        String doblaje = (String) cb_serie.getSelectedItem();
-        String subtitulo = (String) cb_subs.getSelectedItem();
-        AdminSeries ads=new AdminSeries("./Series.txt");
-        ads.getListaSeries().add(new Series(nombre, Tiempo, categoria, actores, temps, productora, idiomaorigi, doblaje, subtitulo));
-        try {
-            ads.escribirArchivo(nombre, Tiempo, temps, categoria, productora, idiomaorigi, doblaje, subtitulo);
-        } catch (IOException ex) {
-            Logger.getLogger(Necfilcs.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        pnombre = nomserie.getText();
+        pTiempo = seriedura.getText();
+        pcategoria = (String) cb_serie.getSelectedItem();
+        pactores = actorserie.getText();
+        ptemps = canttemp.getText();
+        pproductora = productoraserie.getText();
+        pidiomaorigi = idiomaori.getText();
+        pdoblaje = (String) cb_doblaje.getSelectedItem();
+        psubtitulo = (String) cb_subs.getSelectedItem();
+
         nomserie.setText("");
         seriedura.setText("");
         actorserie.setText("");
         canttemp.setText("");
         productoraserie.setText("");
         idiomaori.setText("");
-        creacionserie.dispose();    
+        creacionserie.dispose();
     }//GEN-LAST:event_crear_serieMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        /*SNombre = nombrepeli.getText();
+        STiempo = pelidura.getText();
+        SCategoria = (String) cbtipo.getSelectedItem();
+        SActores = actorpeli.getText();
+        Sdirector = directorpeli.getText();
+        Scompania = companiapeli.getText();
+        SIdiorigi = idiomapeli.getText();
+        Sdobla = (String) doblajepeli.getSelectedItem();
+        SSubtitulo = (String) subspeli.getSelectedItem();
+         */
+
+        logout = false;
+        if (logout == false) {
+            menu1.dispose();
+            AdminSeries ads = new AdminSeries("./Series.txt");
+            ads.getListaSeries().add(new Series(pnombre, pTiempo,pcategoria, pactores,ptemps, pproductora, pidiomaorigi,pdoblaje,psubtitulo));
+            try {
+                ads.escribirArchivo();
+            } catch (IOException ex) {
+            }
+            AdminPelis adp = new AdminPelis("./Peliculas.txt");
+            adp.getListaPelis().add(new Peliculas(SNombre, STiempo, SCategoria, SActores, Sdirector, Scompania, SIdiorigi, Sdobla, SSubtitulo));
+            try {
+                adp.escribirArchivo();
+            } catch (IOException ex) {
+
+            }
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -610,6 +640,7 @@ public class Necfilcs extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> doblajepeli;
     private javax.swing.JTextField idiomaori;
     private javax.swing.JTextField idiomapeli;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -643,6 +674,25 @@ public class Necfilcs extends javax.swing.JFrame {
     private javax.swing.JTextField seriedura;
     private javax.swing.JComboBox<String> subspeli;
     // End of variables declaration//GEN-END:variables
-ArrayList<Peliculas> peli = new ArrayList();
-    ArrayList<Series> series = new ArrayList();
+static boolean logout;
+    static String pnombre;
+    static String pTiempo;
+    static String pcategoria;
+    static String pactores;
+    static String ptemps;
+    static String pproductora;
+    static String pidiomaorigi;
+    static String pdoblaje;
+    static String psubtitulo;
+
+    static String SNombre;
+    static String STiempo;
+    static String SCategoria;
+    static String SActores;
+    static String Sdirector;
+    static String Scompania;
+    static String SIdiorigi;
+    static String Sdobla;
+    static String SSubtitulo;
+
 }

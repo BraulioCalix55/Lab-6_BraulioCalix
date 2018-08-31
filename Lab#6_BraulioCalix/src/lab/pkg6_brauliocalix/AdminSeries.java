@@ -56,22 +56,21 @@ public class AdminSeries {
     actores principales , numero de temporadas , productora , 
     idioma original , si tiene doblaje  y si tiene subtítulos al español.
      */    
-    public void escribirArchivo(String Nombre,String Tiempo,String Temps,String Categoria,String Productora,String Idiomaorigi
-    ,String Doblaje,String Subtitulo) throws IOException {
+    public void escribirArchivo() throws IOException {
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {
-            fw = new FileWriter(archivo, false);
+            fw = new FileWriter(archivo, true);
             bw = new BufferedWriter(fw);
             for (Series t : listaSeries) {
-                bw.write(Nombre + ";");
-                bw.write(Tiempo + ";");
-                bw.write(Categoria + ";");
-                bw.write(Temps + ";");
-                bw.write(Productora + ";");
-                bw.write(Idiomaorigi + ";");
-                bw.write(Doblaje + ";");
-                bw.write(Subtitulo + ";");
+                bw.write(t.getNombre()+ ";");
+                bw.write(t.getTiempo() + ";");
+                bw.write(t.getCategoria() + ";");
+                bw.write(t.getTemps() + ";");
+                bw.write(t.getProductora() + ";");
+                bw.write(t.getIdiomaorigi()+ ";");
+                bw.write(t.getDoblaje() + ";");
+                bw.write(t.getSubtitulo() + ";");
             }
             bw.flush();
         } catch (Exception e) {
