@@ -9,13 +9,6 @@ package lab.pkg6_brauliocalix;
  *
  * @author User
  */
-public class Lab6_BraulioCalix {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class AdminSeries {
     
 }

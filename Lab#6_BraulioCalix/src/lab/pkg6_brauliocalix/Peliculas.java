@@ -27,13 +27,13 @@ public class Peliculas {
     private String director;
     private String compania;
     private String Idiorigi;
-    private boolean dobla;
-    private boolean Subtitulo;
+    private String dobla;
+    private String Subtitulo;
 
     public Peliculas() {
     }
 
-    public Peliculas(String Nombre, String Tiempo, String Categoria, ArrayList Actores, String director, String compania, String Idiorigi, boolean dobla, boolean Subtitulo) {
+    public Peliculas(String Nombre, String Tiempo, String Categoria, ArrayList Actores, String director, String compania, String Idiorigi, String dobla, String Subtitulo) {
         this.Nombre = Nombre;
         this.Tiempo = Tiempo;
         this.Categoria = Categoria;
@@ -101,21 +101,27 @@ public class Peliculas {
         this.Idiorigi = Idiorigi;
     }
 
-    public boolean isDobla() {
+    public String getDobla() {
         return dobla;
     }
 
-    public void setDobla(boolean dobla) {
+    public void setDobla(String dobla) {
         this.dobla = dobla;
     }
 
-    public boolean isSubtitulo() {
+    public String getSubtitulo() {
         return Subtitulo;
     }
 
-    public void setSubtitulo(boolean Subtitulo) {
+    public void setSubtitulo(String Subtitulo) {
         this.Subtitulo = Subtitulo;
     }
 
+    @Override
+    public String toString() {
+        return "Peliculas{" + "Nombre=" + Nombre + ", Tiempo=" + Tiempo + ", Categoria=" + Categoria + ", Actores=" + Actores + ", director=" + director + ", compania=" + compania + ", Idiorigi=" + Idiorigi + ", dobla=" + dobla + ", Subtitulo=" + Subtitulo + '}';
+    }
+
+    
    
 }
