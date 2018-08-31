@@ -7,6 +7,7 @@ package lab.pkg6_brauliocalix;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -496,34 +497,7 @@ public class Necfilcs extends javax.swing.JFrame {
     }//GEN-LAST:event_creaserieMouseClicked
 
     private void agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarMouseClicked
-        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_nec.getModel();
-        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
-        //obtenera la persona a guardar
-        DefaultListModel modeloLISTA = (DefaultListModel) jt_nec.getModel();
-
-        String nombre;
-        String descrip;
-        String funcion;
-        //nombre = ((Peliculas) peli
-        //descrip = ((Peliculas) modeloLISTA.get(jl_aseo.getSelectedIndex())).getDescrip();
-        //funcion = ((Peliculas) modeloLISTA.get(jl_aseo.getSelectedIndex())).getFuncion();
-        int centinela = -1;
-        //que hace el for
-        for (int i = 0; i < raiz.getChildCount(); i++) {
-            // if (raiz.getChildAt(i).toString().equals(nombre)) {
-            //      DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Peliculas(nombre, descrip, funcion));
-            // ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
-            centinela = 1;
-        }
-        //}
-        if (centinela == -1) {
-            //DefaultMutableTreeNode n = new DefaultMutableTreeNode(funcion);
-            //DefaultMutableTreeNode p = new DefaultMutableTreeNode(new Peliculas(nombre, descrip, funcion));
-
-            // n.add(p);
-            //raiz.add(n);
-        }
-        modeloARBOL.reload();
+        
 
     }//GEN-LAST:event_agregarMouseClicked
 
@@ -544,6 +518,15 @@ public class Necfilcs extends javax.swing.JFrame {
         directorpeli.setText("");
         companiapeli.setText("");
         idiomapeli.setText("");
+        creacionpeli.dispose();
+        AdminPelis adp=new AdminPelis("./Peliculas.txt");
+
+        adp.getListaPelis().add(new Peliculas(Nombre, Tiempo, Categoria, Actores, director, compania, Idiorigi, dobla, Subtitulo));
+        try {
+            adp.escribirArchivo();
+        } catch (IOException ex) {
+
+        }
     }//GEN-LAST:event_creapelisMouseClicked
 
     private void crear_serieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_serieMouseClicked
@@ -556,15 +539,20 @@ public class Necfilcs extends javax.swing.JFrame {
         String idiomaorigi = idiomaori.getText();
         String doblaje = (String) cb_serie.getSelectedItem();
         String subtitulo = (String) cb_subs.getSelectedItem();
-        series.add(new Series(nombre, Tiempo, categoria, actores, temps, productora, idiomaorigi, doblaje, subtitulo));
+        AdminSeries ads=new AdminSeries("./Series.txt");
+        ads.getListaSeries().add(new Series(nombre, Tiempo, categoria, actores, temps, productora, idiomaorigi, doblaje, subtitulo));
+        try {
+            ads.escribirArchivo(nombre, Tiempo, temps, categoria, productora, idiomaorigi, doblaje, subtitulo);
+        } catch (IOException ex) {
+            Logger.getLogger(Necfilcs.class.getName()).log(Level.SEVERE, null, ex);
+        }
         nomserie.setText("");
         seriedura.setText("");
         actorserie.setText("");
         canttemp.setText("");
         productoraserie.setText("");
         idiomaori.setText("");
-        System.out.println("");
-        System.out.println("");
+        creacionserie.dispose();    
     }//GEN-LAST:event_crear_serieMouseClicked
 
     /**

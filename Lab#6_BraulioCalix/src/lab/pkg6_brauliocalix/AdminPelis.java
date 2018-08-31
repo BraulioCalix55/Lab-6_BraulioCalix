@@ -46,7 +46,7 @@ public class AdminPelis {
         return "lista peliculas=" + listaPelis;
     }
 
-    public void setPersona(Peliculas p) {
+    public void setpeli(Peliculas p) {
         this.listaPelis.add(p);
     }
 /*
@@ -60,12 +60,13 @@ public class AdminPelis {
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {
-            fw = new FileWriter(archivo, false);
+            fw = new FileWriter(archivo, true);
             bw = new BufferedWriter(fw);
             for (Peliculas t : listaPelis) {
-                bw.write(t.getNombre() + ";");
+                bw.write(t.getNombre()+ ";");
                 bw.write(t.getTiempo()+ ";");
                 bw.write(t.getCategoria()+ ";");
+                bw.write(t.getActores()+";");
                 bw.write(t.getDirector()+";");
                 bw.write(t.getCompania()+";");
                 bw.write(t.getIdiorigi()+";");
