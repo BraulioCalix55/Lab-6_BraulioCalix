@@ -87,17 +87,18 @@ public class AdminPelis {
                 sc = new Scanner(archivo);
                 sc.useDelimiter(";");
                 while (sc.hasNext()) {
-                    String Nombre,tiempo,cate,direc,compa,idiorigi,doblaje,subti;
+                    String Nombre,tiempo,cate,actor,direc,compa,idiorigi,doblaje,subti;
                     Nombre = sc.next();
                     tiempo=sc.next();
                     cate=sc.next();
+                    actor=sc.next();
                     direc=sc.next();
                     compa=sc.next();
                     idiorigi=sc.next();
                     doblaje=sc.next();
                     subti=sc.next();
                     
-                    listaPelis.add(new Peliculas(Nombre, tiempo, cate, listaPelis, direc, compa, idiorigi, doblaje, subti));                 
+                    listaPelis.add(new Peliculas(Nombre, tiempo, cate, actor, direc, compa, idiorigi, doblaje, subti));                 
                 }
             } catch (Exception e) {
             } finally {

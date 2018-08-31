@@ -19,19 +19,21 @@ public class Series {
     idioma original , si tiene doblaje  y si tiene subtítulos al español.
     */    
     private String nombre;
+    private String Tiempo;
     private String categoria;
-    private ArrayList actores;
+    private String actores;
     private String temps;
     private String productora;
     private String idiomaorigi;
-    private boolean doblaje;
-    private boolean subtitulo;
+    private String doblaje;
+    private String subtitulo;
 
     public Series() {
     }
 
-    public Series(String nombre, String categoria, ArrayList actores, String temps, String productora, String idiomaorigi, boolean doblaje, boolean subtitulo) {
+    public Series(String nombre, String Tiempo, String categoria, String actores, String temps, String productora, String idiomaorigi, String doblaje, String subtitulo) {
         this.nombre = nombre;
+        this.Tiempo = Tiempo;
         this.categoria = categoria;
         this.actores = actores;
         this.temps = temps;
@@ -39,6 +41,14 @@ public class Series {
         this.idiomaorigi = idiomaorigi;
         this.doblaje = doblaje;
         this.subtitulo = subtitulo;
+    }
+
+    public String getActores() {
+        return actores;
+    }
+
+    public void setActores(String actores) {
+        this.actores = actores;
     }
 
     public String getNombre() {
@@ -49,6 +59,14 @@ public class Series {
         this.nombre = nombre;
     }
 
+    public String getTiempo() {
+        return Tiempo;
+    }
+
+    public void setTiempo(String Tiempo) {
+        this.Tiempo = Tiempo;
+    }
+
     public String getCategoria() {
         return categoria;
     }
@@ -57,13 +75,7 @@ public class Series {
         this.categoria = categoria;
     }
 
-    public ArrayList getActores() {
-        return actores;
-    }
-
-    public void setActores(ArrayList actores) {
-        this.actores = actores;
-    }
+   
 
     public String getTemps() {
         return temps;
@@ -89,25 +101,26 @@ public class Series {
         this.idiomaorigi = idiomaorigi;
     }
 
-    public boolean isDoblaje() {
+    public String getDoblaje() {
         return doblaje;
     }
 
-    public void setDoblaje(boolean doblaje) {
+    public void setDoblaje(String doblaje) {
         this.doblaje = doblaje;
     }
 
-    public boolean isSubtitulo() {
+    public String getSubtitulo() {
         return subtitulo;
     }
 
-    public void setSubtitulo(boolean subtitulo) {
+    public void setSubtitulo(String subtitulo) {
         this.subtitulo = subtitulo;
     }
 
     @Override
     public String toString() {
-        return "Series{" + "nombre=" + nombre + ", categoria=" + categoria + ", actores=" + actores + ", temps=" + temps + ", productora=" + productora + ", idiomaorigi=" + idiomaorigi + ", doblaje=" + doblaje + ", subtitulo=" + subtitulo + '}';
+        return "Series{" + "nombre=" + nombre + ", Tiempo=" + Tiempo + ", categoria=" + categoria + ", actores=" + actores + ", temps=" + temps + ", productora=" + productora + ", idiomaorigi=" + idiomaorigi + ", doblaje=" + doblaje + ", subtitulo=" + subtitulo + '}';
     }
+
     
     }

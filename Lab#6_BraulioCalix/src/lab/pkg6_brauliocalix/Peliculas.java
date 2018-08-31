@@ -23,7 +23,7 @@ public class Peliculas {
     private String Nombre;
     private String Tiempo;
     private String Categoria;
-    private ArrayList Actores;
+    private String Actores;
     private String director;
     private String compania;
     private String Idiorigi;
@@ -33,7 +33,7 @@ public class Peliculas {
     public Peliculas() {
     }
 
-    public Peliculas(String Nombre, String Tiempo, String Categoria, ArrayList Actores, String director, String compania, String Idiorigi, String dobla, String Subtitulo) {
+    public Peliculas(String Nombre, String Tiempo, String Categoria, String Actores, String director, String compania, String Idiorigi, String dobla, String Subtitulo) {
         this.Nombre = Nombre;
         this.Tiempo = Tiempo;
         this.Categoria = Categoria;
@@ -69,11 +69,11 @@ public class Peliculas {
         this.Categoria = Categoria;
     }
 
-    public ArrayList getActores() {
+    public String getActores() {
         return Actores;
     }
 
-    public void setActores(ArrayList Actores) {
+    public void setActores(String Actores) {
         this.Actores = Actores;
     }
 

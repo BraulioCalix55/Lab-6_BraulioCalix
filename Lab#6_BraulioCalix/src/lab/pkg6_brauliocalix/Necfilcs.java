@@ -5,15 +5,25 @@
  */
 package lab.pkg6_brauliocalix;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
  */
+
+
 public class Necfilcs extends javax.swing.JFrame {
 
     /**
      * Creates new form Necfilcs
      */
+    
     public Necfilcs() {
         initComponents();
     }
@@ -30,19 +40,21 @@ public class Necfilcs extends javax.swing.JFrame {
         login = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        nomlog = new javax.swing.JTextField();
+        nombrelog = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         login.setText("log in");
+        login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginMouseClicked(evt);
+            }
+        });
 
         jLabel1.setText("contrasena");
 
         jLabel2.setText("nombre");
-
-        jButton1.setText("crear cuenta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,14 +65,11 @@ public class Necfilcs extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(login)
-                        .addGap(125, 125, 125)
-                        .addComponent(jButton1))
+                    .addComponent(login)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                        .addComponent(nomlog, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(190, Short.MAX_VALUE))
+                        .addComponent(nombrelog, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(291, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(58, 58, 58)
@@ -71,15 +80,13 @@ public class Necfilcs extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(108, 108, 108)
-                .addComponent(nomlog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombrelog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(112, 112, 112)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(login)
-                    .addComponent(jButton1))
+                .addComponent(login)
                 .addGap(68, 68, 68))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -90,6 +97,36 @@ public class Necfilcs extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
+        Scanner lea=new Scanner(System.in);
+        File archivo = new File("./Usuarios.txt");
+        try {
+            lea = new Scanner(archivo);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Necfilcs.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      String Nombre=nombrelog.getText();
+      String Contra=this.jPasswordField1.getText();
+      boolean f = false;
+            lea.useDelimiter(";");
+            while (lea.hasNext()) {
+                String t1, t2, t3;
+                t1 = lea.next();
+                t2 = lea.next();
+                t3=lea.next();
+
+                if (t1.equals(Nombre) && t2.equals(Contra)) {
+                    f = true;
+                    break;
+                }
+            }
+            if (f==true) {
+            JOptionPane.showMessageDialog(this, "bienvenido "+Nombre);
+        }
+            nombrelog.setText("");
+            jPasswordField1.setText("");
+    }//GEN-LAST:event_loginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -127,12 +164,11 @@ public class Necfilcs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JButton login;
-    private javax.swing.JTextField nomlog;
+    private javax.swing.JTextField nombrelog;
     // End of variables declaration//GEN-END:variables
 
 
